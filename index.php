@@ -18,7 +18,7 @@ $app->get('/', function() {
 
 });
 
-$app->get('/doc', function() {
+$app->get('/admin', function() {
 
 	$page = new PageAdmin();
 
