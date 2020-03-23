@@ -200,7 +200,7 @@ class User extends Model {
 	{
 
 		$sql = new Sql();
-
+		echo  "<script>console.log('Passou por aqui');</script>";
 		$results = $sql->select("
 			SELECT *
 			FROM tb_persons a
