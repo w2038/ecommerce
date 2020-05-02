@@ -15,9 +15,9 @@ class Mailer {
     public function __construct($toAddress, $toName, $subject, $tplName, $data = array())
     {
         $config = array(
-		    "tpl_dir"       => $_SERVER['DOCUMENT_ROOT']."/views/email/",
-		    "cache_dir"     => $_SERVER['DOCUMENT_ROOT']."/views-cache/",
-		    "debug"         => false
+		    "tpl_dir"   => $_SERVER['DOCUMENT_ROOT']."/views/email/",
+		    "cache_dir" => $_SERVER['DOCUMENT_ROOT']."/views-cache/",
+		    "debug"     => false
 		);
 
 		Tpl::configure( $config );
@@ -30,7 +30,7 @@ class Mailer {
 
         $html = $tpl->draw($tplName, true);
 
-        $this->mail = new \PHPMailer;
+        $this->mail = new \PHPMailer();
 
         $this->mail ->isSMTP();
 
@@ -42,7 +42,7 @@ class Mailer {
 
         $this->mail->Port = 587;
 
-        $this->mail->isSMTP();
+        // $this->mail->isSMTP();
 
         $this->mail->SMTPOptions = array(
             'ssl' => array(
