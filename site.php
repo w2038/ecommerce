@@ -146,10 +146,10 @@ $app->get("/checkout", function(){
 	$cart = Cart::getFromSession();
 	
 
-	if (!isset($_GET['zipcode']))$_GET['zipcode'] = $cart->getdeszipcode();
+	if (!isset($_GET['zipcode'])) $_GET['zipcode'] = $cart->getdeszipcode();
 	
 
-	if (isset($GET['zipcode'])) {
+	if (isset($_GET['zipcode'])) {
 
 		$address->loadFromCEP($_GET['zipcode']);
 
@@ -253,7 +253,7 @@ $app->post("/checkout", function(){
 
 	$order->save();
 
-	header("Location: /order".$order->getidorder());
+	header("Location: /order/".$order->getidorder());
 	exit;
 
 });
@@ -457,7 +457,9 @@ $app->post("/profile", function(){
 
 	$user->setData($_POST);
 
-	$user->update();
+	$user->update(false);
+
+	$_SESSION[User::SESSION] = $user->getValues();
 
 	User::setSuccess("Dados alterados com sucesso!");
 

@@ -12,7 +12,7 @@ class Address extends Model {
     public static function getCEP($nrcep)
     {
 
-        $nrcep = str_replace("-", " ", $nrcep);
+        $nrcep = str_replace("-", "", $nrcep);
 
         $ch = curl_init();
 
@@ -71,7 +71,7 @@ class Address extends Model {
         }
     }
 
-    public static function setMsgErro($msg)
+    public static function setMsgError($msg)
 	{
 
 		$_SESSION[Address::SESSION_ERROR] = $msg;
