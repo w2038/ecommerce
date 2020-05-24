@@ -1,24 +1,25 @@
-<?php
+<?php 
+
 namespace Hcode;
 
 use Rain\Tpl;
 
-class Mailer{
-		const USERNAME = "cbdiego.marchesi@gmail.com";
-		const PASSWORD = "08133123";
-		const NAME_FROM = "Hcode Store";
+class Mailer {
+	
+	const USERNAME = "cursophp7hcode@gmail.com";
+	const PASSWORD = "<?password?>";
+	const NAME_FROM = "Hcode Store";
 
+	private $mail;
 
-		private $mail;
-
-	public function __construct($toAddress, $toName, $subject, $tplName, $data = array()){
-
+	public function __construct($toAddress, $toName, $subject, $tplName, $data = array())
+	{
 
 		$config = array(
 			"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/email/",
 			"cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
-			"debug"         => false // set to false to improve the speed
-		);
+			"debug"         => false
+	    );
 
 		Tpl::configure( $config );
 
@@ -30,26 +31,19 @@ class Mailer{
 
 		$html = $tpl->draw($tplName, true);
 
-
-
-
-
-
-		//Create a new PHPMailer instance
 		$this->mail = new \PHPMailer;
-
-		$this->mail->CharSet = 'UTF-8';
 
 		//Tell PHPMailer to use SMTP
 		$this->mail->isSMTP();
 
-
-
 		//Enable SMTP debugging
-		// 0 = off (for production use) = em produção
-		// 1 = client messages = teste
-		// 2 = client and server messages = desenvolvimento
+		// 0 = off (for production use)
+		// 1 = client messages
+		// 2 = client and server messages
 		$this->mail->SMTPDebug = 0;
+
+		//Ask for HTML-friendly debug output
+		$this->mail->Debugoutput = 'html';
 
 		//Set the hostname of the mail server
 		$this->mail->Host = 'smtp.gmail.com';
@@ -73,10 +67,10 @@ class Mailer{
 		$this->mail->Password = Mailer::PASSWORD;
 
 		//Set who the message is to be sent from
-		$this->mail->setFrom( Mailer::USERNAME, Mailer::NAME_FROM);
+		$this->mail->setFrom(Mailer::USERNAME, Mailer::NAME_FROM);
 
 		//Set an alternative reply-to address
-		#$this->mail->addReplyTo('replyto@example.com', 'First Last');
+		//$this->mail->addReplyTo('replyto@example.com', 'First Last');
 
 		//Set who the message is to be sent to
 		$this->mail->addAddress($toAddress, $toName);
@@ -86,25 +80,23 @@ class Mailer{
 
 		//Read an HTML message body from an external file, convert referenced images to embedded,
 		//convert HTML into a basic plain-text alternative body
-		$this->mail->msgHTML($html); //contents.html e o conteudo que sera enviado
+		$this->mail->msgHTML($html);
 
 		//Replace the plain text body with one created manually
-		$this->mail->AltBody = 'texto caso o arquivo contents.html nao funcionar';// texto caso o arquivo contents.html nao funcionar
+		$this->mail->AltBody = 'This is a plain-text message body';
 
 		//Attach an image file
-		#$this->mail->addAttachment('images/phpmailer_mini.png'); //anexa o arquivo para enviar. passar o caminho do arquivo
-
-		
-
-
+		//$mail->addAttachment('images/phpmailer_mini.png');
 
 	}
 
-	public function send(){
+	public function send()
+	{
 
 		return $this->mail->send();
+
 	}
 
 }
-?>
 
+ ?>

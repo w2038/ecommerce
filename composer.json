@@ -1,9 +1,9 @@
 {
-    "name": "Diego-Marchesi/ecommerce",
+    "name": "hcodebr/ecommerce",
     "authors": [
         {
-            "name": "Diego Marchesi",
-            "email": "cbdiego.marchesi@gmail.com"
+            "name": "Hcode Treinamentos",
+            "email": "suporte@hcode.com.br"
         }
     ],
     "require": {
