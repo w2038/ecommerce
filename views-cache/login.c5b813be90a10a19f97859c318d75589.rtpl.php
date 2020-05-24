@@ -16,15 +16,13 @@
     <div class="container">
         <div class="row">                
             <div class="col-md-6">
-
-                <?php if( $error !='' ){ ?>
+                <?php if( $error != ''  ){ ?>
 
                 <div class="alert alert-danger">
-                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                   <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
 
                 </div>
                 <?php } ?>
-
 
                 <form action="/login" id="login-form-wrap" class="login" method="post">
                     <h2>Acessar</h2>
@@ -52,7 +50,7 @@
             </div>
             <div class="col-md-6">
                 
-                <?php if( $errorRegister != '' ){ ?>
+                <?php if( $errorRegister != ''  ){ ?>
 
                 <div class="alert alert-danger">
                     <?php echo htmlspecialchars( $errorRegister, ENT_COMPAT, 'UTF-8', FALSE ); ?>

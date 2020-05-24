@@ -1,9 +1,9 @@
 {
-    "name": "w2038/ecommerce",
+    "name": "Diego-Marchesi/ecommerce",
     "authors": [
         {
-            "name": "wagner",
-            "email": "w4gn3r2038@gmail.com"
+            "name": "Diego Marchesi",
+            "email": "cbdiego.marchesi@gmail.com"
         }
     ],
     "require": {
